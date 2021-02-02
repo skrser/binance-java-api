@@ -1,0 +1,14 @@
+dependencies {
+    def retrofitVersion = '2.4.0'
+
+    implementation "com.squareup.retrofit2:retrofit:${retrofitVersion}"
+    implementation "com.squareup.retrofit2:converter-jackson:${retrofitVersion}"
+    implementation 'commons-codec:commons-codec:1.10'
+    implementation 'org.apache.commons:commons-lang3:3.6'
+
+    testImplementation 'junit:junit:4.12'
+}
+
+test {
+    useJUnitPlatform()
+}
