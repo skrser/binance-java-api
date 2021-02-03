@@ -6,47 +6,50 @@ package com.binance.api.client.config;
 public class BinanceApiConfig {
 
 	/**
-	 * Base domain for URLs.
+	 * Base domain for web sockets.
 	 */
-	private static String BASE_DOMAIN = "binance.com";
+	private static String BASE_STREAMS_URL = "wss://stream.binance.com:9443/ws";
+
+	/**
+	 * Base domain for rest api.
+	 */
+	private static String BASE_REST_URL = "https://api.binance.com";
+
+	/**
+	 * Base domain for asset calls
+	 */
+	private static final String BASE_ASSET_URL = "https://binance.com";
 
 	/**
 	 * Set the URL base domain name (e.g., binance.com).
 	 *
-	 * @param baseDomain Base domain name
+	 * @param baseStreamsDomain Base domain name to use with web sockets
+	 * @param baseRestDomain Base domain name to use with the rest api
 	 */
-	public static void setBaseDomain(final String baseDomain) {
-		BASE_DOMAIN = baseDomain;
-	}
-
-	/**
-	 * Get the URL base domain name (e.g., binance.com).
-	 *
-	 * @return The base domain for URLs
-	 */
-	public static String getBaseDomain() {
-		return BASE_DOMAIN;
+	public static void setBaseDomains(String baseStreamsDomain, String baseRestDomain) {
+		BASE_STREAMS_URL = baseStreamsDomain;
+		BASE_REST_URL = baseRestDomain;
 	}
 
 	/**
 	 * REST API base URL.
 	 */
 	public static String getApiBaseUrl() {
-		return String.format("https://api.%s", getBaseDomain());
+		return BASE_REST_URL;
 	}
 
 	/**
 	 * Streaming API base URL.
 	 */
 	public static String getStreamApiBaseUrl() {
-		return String.format("wss://stream.%s:9443/ws", getBaseDomain());
+		return BASE_STREAMS_URL;
 	}
 
 	/**
 	 * Asset info base URL.
 	 */
 	public static String getAssetInfoApiBaseUrl() {
-		return String.format("https://%s/", getBaseDomain());
+		return BASE_ASSET_URL;
 	}
 
 }
