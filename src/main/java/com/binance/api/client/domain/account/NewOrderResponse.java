@@ -6,6 +6,7 @@ import com.binance.api.client.domain.OrderStatus;
 import com.binance.api.client.domain.OrderType;
 import com.binance.api.client.domain.TimeInForce;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import java.util.Objects;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import java.util.Collections;
@@ -185,4 +186,31 @@ public class NewOrderResponse {
             .collect(Collectors.joining(", ")))
         .toString();
   }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        NewOrderResponse that = (NewOrderResponse) o;
+        return Objects.equals(symbol, that.symbol) && Objects.equals(orderId, that.orderId)
+                && Objects.equals(clientOrderId, that.clientOrderId) && Objects
+                .equals(price, that.price) && Objects.equals(origQty, that.origQty) && Objects
+                .equals(executedQty, that.executedQty) && Objects
+                .equals(cummulativeQuoteQty, that.cummulativeQuoteQty) && status == that.status
+                && timeInForce == that.timeInForce && type == that.type && side == that.side && Objects
+                .equals(fills, that.fills) && Objects.equals(transactTime, that.transactTime);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects
+                .hash(symbol, orderId, clientOrderId, price, origQty, executedQty, cummulativeQuoteQty, status,
+                        timeInForce,
+                        type, side, fills, transactTime);
+    }
+
 }

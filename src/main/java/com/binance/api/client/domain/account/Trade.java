@@ -4,6 +4,7 @@ import com.binance.api.client.constant.BinanceApiConstants;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSetter;
+import java.util.Objects;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 /**
@@ -184,5 +185,28 @@ public class Trade {
         .append("bestMatch", bestMatch)
         .append("orderId", orderId)
         .toString();
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    Trade trade = (Trade) o;
+    return time == trade.time && buyer == trade.buyer && maker == trade.maker && bestMatch == trade.bestMatch
+            && Objects.equals(id, trade.id) && Objects.equals(price, trade.price)
+            && Objects.equals(qty, trade.qty) && Objects.equals(quoteQty, trade.quoteQty)
+            && Objects.equals(commission, trade.commission) && Objects
+            .equals(commissionAsset, trade.commissionAsset) && Objects.equals(symbol, trade.symbol)
+            && Objects.equals(orderId, trade.orderId);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(id, price, qty, quoteQty, commission, commissionAsset, time, symbol, buyer, maker, bestMatch,
+            orderId);
   }
 }
