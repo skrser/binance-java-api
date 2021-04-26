@@ -51,7 +51,7 @@ public interface BinanceApiRestClient {
   /**
    * @return All trade fees for each asset.
    */
-  List<TradeFee> getAllTradeFees(long timestamp, String symbol, Long recvWindow);
+  List<TradeFee> getAllTradeFees(String symbol);
 
   // Market Data endpoints
 
