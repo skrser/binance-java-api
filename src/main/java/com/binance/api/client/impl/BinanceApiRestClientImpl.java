@@ -7,6 +7,7 @@ import com.binance.api.client.domain.account.*;
 import com.binance.api.client.domain.account.request.*;
 import com.binance.api.client.domain.general.Asset;
 import com.binance.api.client.domain.general.ExchangeInfo;
+import com.binance.api.client.domain.general.TradeFee;
 import com.binance.api.client.domain.market.*;
 import retrofit2.Call;
 
@@ -48,6 +49,11 @@ public class BinanceApiRestClientImpl implements BinanceApiRestClient {
 	public List<Asset> getAllAssets() {
 		return executeSync(binanceApiService
 				.getAllAssets(BinanceApiConfig.getAssetInfoApiBaseUrl() + "assetWithdraw/getAllAsset.html"));
+	}
+
+	@Override
+	public List<TradeFee> getAllTradeFees(long timestamp, String symbol, Long recvWindow) {
+		return executeSync(binanceApiService.getAllTradeFees(timestamp, symbol, recvWindow));
 	}
 
 	// Market Data endpoints
