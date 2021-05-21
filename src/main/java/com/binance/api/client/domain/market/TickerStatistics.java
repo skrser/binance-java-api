@@ -41,6 +41,11 @@ public class TickerStatistics {
   private String lastPrice;
 
   /**
+   * Last quantity.
+   */
+  private String lastQty;
+
+  /**
    * Bid price.
    */
   private String bidPrice;
@@ -69,6 +74,11 @@ public class TickerStatistics {
    * Total volume during the past 24 hours.
    */
   private String volume;
+
+  /**
+   * Total quote volume during the past 24 hours.
+   */
+  private String quoteVolume;
 
   /**
    * Open time.
@@ -135,6 +145,14 @@ public class TickerStatistics {
     this.lastPrice = lastPrice;
   }
 
+  public String getLastQty() {
+    return lastQty;
+  }
+
+  public void setLastQty(String lastQty) {
+    this.lastQty = lastQty;
+  }
+
   public String getBidPrice() {
     return bidPrice;
   }
@@ -181,6 +199,14 @@ public class TickerStatistics {
 
   public void setVolume(String volume) {
     this.volume = volume;
+  }
+
+  public String getQuoteVolume() {
+    return quoteVolume;
+  }
+
+  public void setQuoteVolume(String quoteVolume) {
+    this.quoteVolume = quoteVolume;
   }
 
   public long getOpenTime() {
